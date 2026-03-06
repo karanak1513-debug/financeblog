@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartWealth | Personal Finance Blog</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-chart-line"></i> Smart<span>Wealth</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#featured" class="nav-link">Articles</a>
+                <a href="#visualizations" class="nav-link">Insights</a>
+                <a href="#tools" class="nav-link">Tools</a>
+                <a href="#tips" class="nav-link">Tips</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search topics...">
+                    <button><i class="fa-solid fa-search"></i></button>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <div class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape live-shape live-shape-1"></div>
+            <div class="shape live-shape live-shape-2"></div>
+            <div class="shape live-shape live-shape-3"></div>
+        </div>
+
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="animate-text-up">
+                    Master Your Money <br>
+                    <span class="highlight-text">Smart Personal Finance for Indians</span>
+                </h1>
+                <p class="hero-subtitle animate-fade-in delay-1">
+                    Learn how to save money, invest wisely in SIPs, and manage your finances better to take control of
+                    your future.
+                </p>
+                <div class="hero-cta animate-fade-in delay-2">
+                    <a href="#featured" class="btn btn-primary hover-glow">Start Learning <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#tools" class="btn btn-outline hover-glow">Try Calculators</a>
+                </div>
+                <div class="hero-stats animate-fade-in delay-3">
+                    <div class="stat-item"><span class="stat-num">50K+</span><span class="stat-label">Readers</span>
+                    </div>
+                    <div class="stat-item"><span class="stat-num">500+</span><span class="stat-label">Articles</span>
+                    </div>
+                    <div class="stat-item"><span class="stat-num">4.9/5</span><span class="stat-label">Rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visuals animate-float delay-1">
+                <div class="glass-card main-chart-card">
+                    <div class="card-header" style="margin-bottom: 5px;">
+                        <h3 style="display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-rocket"
+                                style="color: var(--accent);"></i> Portfolio Growth</h3>
+                        <span class="badge badge-green">Target: ₹1 Cr</span>
+                    </div>
+                    <div style="font-size: 2.8rem; font-weight: 800; margin-bottom: 5px; font-family: 'Outfit', sans-serif; color: var(--primary-light);"
+                        id="hero-portfolio-value">₹0</div>
+                    <canvas id="heroChart" width="400" height="200"></canvas>
+                </div>
+
+                <!-- Floating Elements -->
+                <div class="floating-coin coin-1">₹</div>
+                <div class="floating-coin coin-2">₹</div>
+                <div class="floating-widget widget-1" style="animation-delay: 0.5s;">
+                    <i class="fa-solid fa-arrow-trend-up widget-icon green"></i>
+                    <div>
+                        <p>Nifty 50</p>
+                        <strong>₹22,341.80</strong>
+                    </div>
+                </div>
+                <div class="floating-widget widget-2">
+                    <i class="fa-solid fa-house widget-icon gold"></i>
+                    <div>
+                        <p>Home Loan EMI</p>
+                        <strong>₹43,391/mo</strong>
+                    </div>
+                </div>
+                <div class="floating-widget widget-3">
+                    <i class="fa-solid fa-money-bill-trend-up widget-icon blue"></i>
+                    <div>
+                        <p>SIP Growth</p>
+                        <strong>+21.4%</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Insights Section -->
+    <section id="featured" class="section">
+        <div class="container">
+            <div class="section-header reveal reveal-up">
+                <h2>Featured Insights</h2>
+                <a href="article.html" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="featured-grid">
+                <!-- Large Card -->
+                <article class="featured-card large-card reveal reveal-left">
+                    <div class="card-img-wrapper hover-img" style="overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=1200"
+                            alt="Stock Market" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="tag tag-gold">Investing</span>
+                            <span class="read-time"><i class="fa-regular fa-clock"></i> 8 min read</span>
+                        </div>
+                        <h3 class="card-title"><a href="article.html">Best SIP Investment Strategy for Beginners</a>
+                        </h3>
+                        <p class="card-excerpt">Discover why passive mutual fund investing through SIPs remains one of
+                            the most reliable strategies for building long-term wealth in India, with historical Nifty
+                            50 data analysis.</p>
+                        <div class="card-author">
+                            <img src="https://i.pravatar.cc/100?img=11" alt="Author">
+                            <div>
+                                <h5>Sarah Jenkins</h5>
+                                <span>Certified Financial Planner</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="side-cards">
+                    <article class="featured-card small-card reveal reveal-right delay-1">
+                        <div class="card-img-wrapper hover-img" style="overflow: hidden;">
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600"
+                                alt="Budgeting" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag tag-green">Budgeting</span>
+                            </div>
+                            <h3 class="card-title"><a href="article.html">How to Save ₹1 Lakh in One Year</a></h3>
+                            <div class="card-author">
+                                <img src="https://i.pravatar.cc/100?img=33" alt="Author">
+                                <h5>Marcus Cole</h5>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="featured-card small-card reveal reveal-right delay-2">
+                        <div class="card-img-wrapper hover-img" style="overflow: hidden;">
+                            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=600"
+                                alt="Credit Cards" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="tag tag-blue">Credit Cards</span>
+                            </div>
+                            <h3 class="card-title"><a href="article.html">Maximizing Credit Card Travel Rewards in
+                                    India</a></h3>
+                            <div class="card-author">
+                                <img src="https://i.pravatar.cc/100?img=44" alt="Author">
+                                <h5>Elena Rodriguez</h5>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Articles Feed -->
+    <section id="latest" class="section bg-alt">
+        <div class="container">
+            <div class="section-header reveal reveal-up">
+                <h2>Latest Articles</h2>
+                <div class="category-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="budgeting">Budgeting & Saving</button>
+                    <button class="filter-btn" data-filter="investing">Mutual Funds & SIP</button>
+                    <button class="filter-btn" data-filter="debt">Loans & EMI</button>
+                    <button class="filter-btn" data-filter="passive">Passive Income</button>
+                </div>
+            </div>
+
+            <div class="article-grid" id="article-grid">
+                <!-- Dynamically populated or static cards -->
+                <article class="post-card reveal reveal-up delay-1" data-category="investing">
+                    <div class="post-img hover-img" style="overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&q=80&w=600"
+                            alt="Crypto" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="tag tag-gold absolute">Investing</span>
+                    </div>
+                    <div class="post-content">
+                        <h4><a href="article.html">How to Start Investing in the Indian Stock Market</a></h4>
+                        <div class="post-meta">
+                            <span>Mar 5, 2026</span> • <span>5 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card reveal reveal-up delay-2" data-category="budgeting">
+                    <div class="post-img hover-img" style="overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?auto=format&fit=crop&q=80&w=600"
+                            alt="Debt" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="tag tag-green absolute">Budgeting</span>
+                    </div>
+                    <div class="post-content">
+                        <h4><a href="article.html">Personal Budget Planning for Indian Families</a></h4>
+                        <div class="post-meta">
+                            <span>Mar 3, 2026</span> • <span>7 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card reveal reveal-up delay-3" data-category="passive">
+                    <div class="post-img hover-img" style="overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=600"
+                            alt="Business" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="tag tag-blue absolute">Passive Income</span>
+                    </div>
+                    <div class="post-content">
+                        <h4><a href="article.html">7 Digital Assets That Generate Income in India</a></h4>
+                        <div class="post-meta">
+                            <span>Feb 28, 2026</span> • <span>10 min read</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-outline" id="load-more">Load More <i class="fa-solid fa-spinner"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Finance Materials Section -->
+    <section id="materials" class="section">
+        <div class="container">
+            <div class="section-header reveal reveal-up">
+                <h2>Free Finance Materials</h2>
+                <p>Download our exclusive templates and e-books to kickstart your journey.</p>
+            </div>
+
+            <div class="materials-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Material 1 -->
+                <div class="glass-card material-card reveal reveal-up delay-1"
+                    style="display: flex; gap: 20px; align-items: center; padding: 25px;">
+                    <div style="font-size: 3rem; color: var(--danger);"><i class="fa-solid fa-file-pdf"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 5px;">50-30-20 Budget Planner</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">A printable PDF
+                            worksheet to track your monthly Indian expenses.</p>
+                        <a href="#" class="btn btn-primary hover-glow" style="padding: 8px 16px; font-size: 0.85rem;"><i
+                                class="fa-solid fa-download"></i> Download</a>
+                    </div>
+                </div>
+
+                <!-- Material 2 -->
+                <div class="glass-card material-card reveal reveal-up delay-2"
+                    style="display: flex; gap: 20px; align-items: center; padding: 25px;">
+                    <div style="font-size: 3rem; color: var(--success);"><i class="fa-solid fa-file-excel"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 5px;">Ultimate SIP Tracker Tracker</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">An automated Excel
+                            sheet to project your mutual fund returns.</p>
+                        <a href="#" class="btn btn-primary hover-glow" style="padding: 8px 16px; font-size: 0.85rem;"><i
+                                class="fa-solid fa-download"></i> Download</a>
+                    </div>
+                </div>
+
+                <!-- Material 3 -->
+                <div class="glass-card material-card reveal reveal-up delay-3"
+                    style="display: flex; gap: 20px; align-items: center; padding: 25px;">
+                    <div style="font-size: 3rem; color: var(--gold);"><i class="fa-solid fa-book-open"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 5px;">Zero to 1 Crore E-Book</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">Our 30-page
+                            definitive guide to stock market basics in India.</p>
+                        <a href="#" class="btn btn-primary hover-glow" style="padding: 8px 16px; font-size: 0.85rem;"><i
+                                class="fa-solid fa-download"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Visualizations Section -->
+    <section id="visualizations" class="section">
+        <div class="container">
+            <div class="section-header text-center reveal reveal-zoom">
+                <h2>Interactive Financial Insights</h2>
+                <p>Visualize data to make smarter monetary decisions.</p>
+            </div>
+
+            <div class="charts-grid">
+                <div class="glass-card chart-card reveal reveal-left delay-1">
+                    <h3>Monthly Expenses Breakdown</h3>
+                    <p class="chart-desc">Average Indian family allocation</p>
+                    <div class="chart-container">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="glass-card chart-card reveal reveal-right delay-2">
+                    <h3>SIP Growth Over Time</h3>
+                    <p class="chart-desc">₹5,000/mo invested over 10 years at 12% returns</p>
+                    <div class="chart-container">
+                        <canvas id="sipChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Finance Tools Section -->
+    <section id="tools" class="section bg-alt">
+        <div class="container">
+            <div class="section-header text-center reveal reveal-up">
+                <h2>Personal Finance Tools</h2>
+                <p>Calculate your path to financial freedom with our interactive calculators.</p>
+            </div>
+
+            <div class="tools-container glass-card reveal reveal-zoom delay-1">
+                <div class="tools-sidebar">
+                    <button class="tool-tab active" data-target="sip-calc"><i class="fa-solid fa-arrow-trend-up"></i>
+                        SIP Calculator</button>
+                    <button class="tool-tab" data-target="emi-calc"><i class="fa-solid fa-house"></i> Loan EMI</button>
+                    <button class="tool-tab" data-target="tax-calc"><i class="fa-solid fa-file-invoice-dollar"></i>
+                        Income Tax</button>
+                    <button class="tool-tab" data-target="goal-calc"><i class="fa-solid fa-bullseye"></i> Savings
+                        Goal</button>
+                </div>
+
+                <div class="tools-content">
+                    <!-- SIP Calculator -->
+                    <div class="tool-panel active" id="sip-calc">
+                        <div class="tool-grid">
+                            <div class="tool-inputs">
+                                <h3>SIP Calculator</h3>
+                                <div class="input-group">
+                                    <label>Monthly Investment (₹ <span id="sip-monthly-val">5,000</span>)</label>
+                                    <input type="range" id="sip-monthly" min="500" max="100000" step="500" value="5000">
+                                </div>
+                                <div class="input-group">
+                                    <label>Expected Return Rate (<span id="sip-rate-val">12</span>% p.a)</label>
+                                    <input type="range" id="sip-rate" min="1" max="30" step="0.5" value="12">
+                                </div>
+                                <div class="input-group">
+                                    <label>Time Period (<span id="sip-years-val">10</span> Years)</label>
+                                    <input type="range" id="sip-years" min="1" max="40" step="1" value="10">
+                                </div>
+                            </div>
+                            <div class="tool-results">
+                                <div class="result-card primary">
+                                    <p>Future Future Value</p>
+                                    <h4 id="sip-result">₹11,61,695</h4>
+                                </div>
+                                <div class="result-stats">
+                                    <div>
+                                        <p>Invested Amount</p>
+                                        <strong id="sip-invested">₹6,00,000</strong>
+                                    </div>
+                                    <div>
+                                        <p>Est. Returns</p>
+                                        <strong id="sip-returns">₹5,61,695</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EMI Calculator -->
+                    <div class="tool-panel" id="emi-calc">
+                        <div class="tool-grid">
+                            <div class="tool-inputs">
+                                <h3>EMI Calculator</h3>
+                                <div class="loan-presets mb-4"
+                                    style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+                                    <button class="tag tag-blue emi-preset active" data-type="home"
+                                        style="border: none; cursor: pointer;">Home Loan</button>
+                                    <button class="tag tag-gold emi-preset" data-type="car"
+                                        style="border: none; cursor: pointer;">Car Loan</button>
+                                    <button class="tag tag-green emi-preset" data-type="personal"
+                                        style="border: none; cursor: pointer;">Personal</button>
+                                </div>
+                                <div class="input-group">
+                                    <label>Loan Amount (₹ <span id="loan-val">50,00,000</span>)</label>
+                                    <input type="range" id="loan-amount" min="100000" max="50000000" step="50000"
+                                        value="5000000">
+                                </div>
+                                <div class="input-group">
+                                    <label>Interest Rate (<span id="rate-val">8.5</span>%)</label>
+                                    <input type="range" id="interest-rate" min="5" max="25" step="0.1" value="8.5">
+                                </div>
+                                <div class="input-group">
+                                    <label>Tenure (<span id="tenure-val">20</span> Years)</label>
+                                    <input type="range" id="loan-tenure" min="1" max="30" step="1" value="20">
+                                </div>
+                            </div>
+                            <div class="tool-results">
+                                <canvas id="emiChart" width="100" height="150" style="margin-bottom: 20px;"></canvas>
+                                <div class="result-card primary" style="padding: 15px;">
+                                    <p>Monthly EMI</p>
+                                    <h4 id="emi-result">₹10,258</h4>
+                                </div>
+                                <div class="result-stats" style="padding: 15px;">
+                                    <div>
+                                        <p>Total Interest</p>
+                                        <strong id="total-interest">₹1,15,491</strong>
+                                    </div>
+                                    <div>
+                                        <p>Total Payment</p>
+                                        <strong id="total-payment">₹6,15,491</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Income Tax Calculator -->
+                    <div class="tool-panel" id="tax-calc">
+                        <div class="tool-grid">
+                            <div class="tool-inputs">
+                                <h3>Income Tax Calculator</h3>
+                                <p class="text-light text-sm mb-4">Estimates based on typical old/new regime logic.</p>
+                                <div class="input-group">
+                                    <label>Annual Salary / Income (₹)</label>
+                                    <input type="number" id="tax-income" value="1200000" class="num-input">
+                                </div>
+                                <div class="input-group">
+                                    <label>80C & Other Deductions (₹)</label>
+                                    <input type="number" id="tax-deductions" value="150000" class="num-input">
+                                </div>
+                                <button class="btn btn-primary mt-3" id="calc-tax-btn">Calculate Tax</button>
+                            </div>
+                            <div class="tool-results">
+                                <ul class="budget-breakdown">
+                                    <li><span class="dot green"></span> Taxable Income: <strong
+                                            id="tax-base">₹10,50,000</strong></li>
+                                    <li><span class="dot blue"></span> Est. Tax (New Regime): <strong
+                                            id="tax-new">₹65,000</strong></li>
+                                    <li><span class="dot gold"></span> Est. Tax (Old Regime): <strong
+                                            id="tax-old">₹1,32,500</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Savings Goal Calculator -->
+                    <div class="tool-panel" id="goal-calc">
+                        <div class="tool-grid">
+                            <div class="tool-inputs">
+                                <h3>Savings Goal Timeline</h3>
+                                <div class="input-group">
+                                    <label>Target Amount (₹)</label>
+                                    <input type="number" id="goal-target" value="1000000" class="num-input">
+                                </div>
+                                <div class="input-group">
+                                    <label>Current Savings (₹)</label>
+                                    <input type="number" id="goal-current" value="200000" class="num-input">
+                                </div>
+                                <div class="input-group">
+                                    <label>Monthly Contribution (₹)</label>
+                                    <input type="number" id="goal-monthly" value="20000" class="num-input">
+                                </div>
+                                <button class="btn btn-primary mt-3" id="calc-goal-btn">Calculate Time</button>
+                            </div>
+                            <div class="tool-results">
+                                <div class="result-card secondary">
+                                    <p>Time to Goal</p>
+                                    <h4 id="goal-result">3 Years 4 Months</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips" class="section">
+        <div class="container">
+            <h2 class="text-center mb-4 reveal reveal-up">Trending Micro-Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card reveal reveal-up">
+                    <div class="tip-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                    <h4>Follow the 50-30-20 Rule</h4>
+                    <p>Spend 50% on needs, 30% on wants, and dedicate at least 20% to savings and SIPs.</p>
+                </div>
+                <div class="tip-card reveal reveal-up delay-1">
+                    <div class="tip-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4>Build an Emergency Fund</h4>
+                    <p>Aim for 6 months of essential living expenses stored in a Liquid Mutual Fund or FD.</p>
+                </div>
+                <div class="tip-card reveal reveal-up delay-2">
+                    <div class="tip-icon"><i class="fa-solid fa-credit-card"></i></div>
+                    <h4>Avoid Credit Card Debt</h4>
+                    <p>Always clear your full credit card bill before the due date to avoid heavy 30%+ interest charges.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section" style="position: relative; overflow: hidden;">
+        <div class="hero-bg-shapes">
+            <div class="shape live-shape live-shape-1" style="width: 300px; height: 300px; top: -50px; left: 10%;">
+            </div>
+            <div class="shape live-shape live-shape-2" style="width: 400px; height: 400px; bottom: -50px; right: 20%;">
+            </div>
+        </div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="newsletter-box glass-card reveal reveal-zoom">
+                <div class="nl-content">
+                    <h2>Get Weekly Finance Tips for Indians</h2>
+                    <p>Get our top saving strategies, tax updates, and investment guides delivered to your inbox every
+                        Sunday.</p>
+                </div>
+                <form class="nl-form" id="nl-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe <i
+                            class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fa-solid fa-chart-line"></i> Smart<span>Wealth</span>
+                    </a>
+                    <p>Empowering millions to take control of their financial destiny through actionable insights and
+                        premium tools.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Investing</a></li>
+                        <li><a href="#">Budgeting</a></li>
+                        <li><a href="#">Credit Cards</a></li>
+                        <li><a href="#">Real Estate</a></li>
+                        <li><a href="#">Passive Income</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Authors</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Disclosure</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SmartWealth. All Rights Reserved. Not financial advice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
